@@ -1,0 +1,11 @@
+<h1><%= @vinyl.title %></h1>
+<p><strong>アーティスト：</strong><%= @vinyl.artist %></p>
+<p><strong>レビュー：</strong><%= @vinyl.review %></p>
+
+<% if @vinyl.image.attached? %>
+    <p><%= image_tag @vinyl.image %></p>
+<% end %>
+
+<%=link_to "編集する", edit_vinyl_path(@vinyl)%>
+<%=link_to "一覧に戻る", vinyls_path %>
+<%= link_to "削除", vinyl_path(@vinyl), method: :delete, data: {confirm:"本当に削除していいですか?", turbo: false }, class: "delete-button" %>

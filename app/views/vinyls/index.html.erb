@@ -1,0 +1,19 @@
+<h1>投稿されたレコード一覧</h1>
+
+<%= link_to "＋新規投稿", new_vinyl_path %>
+<div class="vinyl-list">
+    <% @vinyls.each do |vinyl| %>
+        <div class="vinyl-card">
+            <% if vinyl.image.attached? %>
+                <%= image_tag vinyl.image.variant(resize_to_limit: [300, 300]) if vinyl.image.attached? %>
+            <% end %>
+
+            <div class="vinyl-info">
+                <h2><%= link_to vinyl.title, vinyl_path(vinyl) %></h2>
+                <p><strong>アーティスト:</strong><%= vinyl.artist %></p>
+                <p><strong>レビュー:</strong><%= vinyl.review %></p>
+            </div>
+        </div>
+    <% end %>
+</div>    
+
